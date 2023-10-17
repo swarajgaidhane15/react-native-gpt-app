@@ -1,30 +1,36 @@
 {
   "expo": {
-    "name": "gpt-app",
+    "name": "Fronts",
     "slug": "gpt-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSSpeechRecognitionUsageDescription": "This app uses speech recognition to convert your speech to text.",
+        "NSCameraUsageDescription": "This app uses the camera to let user put a photo in his profile page."
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/images/chatgptIcon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": ["android.permission.RECORD_AUDIO"]
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "web": {},
+    "expo": {
+      "plugins": [
+        [
+          "@react-native-voice/voice",
+          {
+            "microphonePermission": "CUSTOM: Allow $(PRODUCT_NAME) to access the microphone",
+            "speechRecognitionPermission": "CUSTOM: Allow $(PRODUCT_NAME) to securely recognize user speech"
+          }
+        ]
+      ]
     }
   }
 }
